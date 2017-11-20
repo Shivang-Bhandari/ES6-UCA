@@ -16,7 +16,7 @@ const students=[
     'batch':'UCA2018'
   },
   {
-    'name':'Fudu',
+    'name':'Fudu A',
     'batch':'222'
   }
 ];
@@ -29,7 +29,7 @@ const addStudent=()=>{
   let name=document.getElementById('add_name').value;
   let lastName=document.getElementById('add_last_name').value;
   let batch=document.getElementById('add_batch').value;
-
+  name=`${name} ${lastName}`;
   // Check for fields
   if(name==""||lastName==""||batch==""){
     Materialize.toast('Please Fill all form Feilds and Try Again', 3000, 'rounded');
@@ -45,4 +45,17 @@ const addStudent=()=>{
 
   // updating list
   getStudentDetails();
+}
+
+// method to remove students
+const removeStudent = ()=>{
+  let name=document.getElementById('first_name').value;
+  let lastName=document.getElementById('last_name').value;
+  let batch=document.getElementById('batch').value;
+  let finalName=`${name} ${lastName}`;
+  if(name==""||lastName==""||batch==""){
+    Materialize.toast('Please Fill all form Feilds and Try Again', 3000, 'rounded');
+  }
+
+  
 }
