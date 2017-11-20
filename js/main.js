@@ -1,6 +1,4 @@
-var batch = "UCA2018";
-let batch2 = "UCA2019";
-
+// Populator function
 function getStudentDetails() {
   list.innerHTML="";
   students.map(student=> list.innerHTML+=`
@@ -10,6 +8,8 @@ function getStudentDetails() {
       </li>
       `);
 }
+
+// Pre-Filled Object Array for students dummy data
 const students=[
   {
     'name':'Abra Dabra',
@@ -23,14 +23,26 @@ const students=[
 
 let list=document.getElementById('main');
 
+// method to add a student to the list
 const addStudent=()=>{
-  let name=document.getElementById('add_name').value+" "+document.getElementById('add_last_name').value;
+
+  let name=document.getElementById('add_name').value;
+  let lastName=document.getElementById('add_last_name').value;
   let batch=document.getElementById('add_batch').value;
-  let kid={
+
+  // Check for fields
+  if(name==""||lastName==""||batch==""){
+    Materialize.toast('Please Fill all form Feilds and Try Again', 3000, 'rounded');
+  }
+
+  // object decalaration
+  const kid={
     name,
     batch
-  }
+  };
+
   students.push(kid);
 
+  // updating list
   getStudentDetails();
 }
