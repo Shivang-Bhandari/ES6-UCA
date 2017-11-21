@@ -15,7 +15,7 @@ function getStudentDetails() {
           </div>
           <div class="card-action" style="display:flex;flex:auto;">
             <div>
-            <a href="#" onclick=edit()>Edit</a>
+            <a href="#" onclick=edit($(this))>Edit</a>
             <a href="#" onclick=deleteStudent($(this))>Delete</a>
             </div>
             <div class="switch right">
@@ -132,6 +132,65 @@ const deleteMultiple = ()=>{
   }
 }
 
-const edit=()=>{
+
+let toBeReplaced=null;
+const edit=($element)=>{
+  toBeReplaced = $element.parent().parent().parent();
+  console.log(toBeReplaced);
   $('#modal1').modal('open');
 }
+
+const replaceNode=(a)=>{
+  let name = document.getElementById('replace_name').value;
+  let batch = document.getElementById('replace_batch').value;
+  let roll = document.getElementById('replace_roll').value;
+  let passout = document.getElementById('replace_passout').value;
+
+  // Check for fields
+  if (name == "" || batch == "" ||roll=="" || passout=="") {
+    Materialize.toast('Please Fill all form Feilds and Try Again', 3000, 'rounded');
+  }
+  else{
+    const kid = {
+      name,
+      batch,
+      roll,
+      passout
+    };
+
+
+
+    // updating list
+    let newNode = `
+        <li>
+
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1 z-depth-3">
+            <div class="card-content white-text">
+              <span class="card-title">${kid.name}</span>
+              <p>Roll Number : ${kid.roll}</p>
+              <p>batch : ${kid.batch}</p>
+              <p>passout : ${kid.passout}</p>
+            </div>
+            <div class="card-action" style="display:flex;flex:auto;">
+              <div>
+              <a href="#" onclick=edit($(this))>Edit</a>
+              <a href="#" onclick=deleteStudent($(this))>Delete</a>
+              </div>
+              <div class="switch right">
+                <label>
+                  No
+                <input type="checkbox" name="deleteThis">
+                <span class="lever"></span>
+                  Delete Multiple
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </li>`
+    toBeReplaced.replaceWith(newNode);
+  }
+}
+console.log(toBeReplaced);
