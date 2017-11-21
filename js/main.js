@@ -6,7 +6,7 @@ function getStudentDetails() {
       <li>
 
       <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1 z-depth-3">
           <div class="card-content white-text">
             <span class="card-title">${student.name}</span>
             <p>Roll Number : ${student.roll}</p>
@@ -79,7 +79,7 @@ const addStudent = () => {
       <li>
 
       <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1 z-depth-3">
           <div class="card-content white-text">
             <span class="card-title">${kid.name}</span>
             <p>Roll Number : ${kid.roll}</p>
@@ -109,7 +109,7 @@ const addStudent = () => {
 
 // method to remove students
 const deleteStudent = ($element) => {
-  let parent1 = $element.parent().parent();
+  let parent1 = $element.parent().parent().parent();
   parent1.remove();
 }
 
