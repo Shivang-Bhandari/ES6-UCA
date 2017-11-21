@@ -1,18 +1,26 @@
-Create any sample project with index.html, main.js and styles
-Goto project directory and run
- - npm init
- - press enter till end
- - npm install babel-cli babel-core --save-dev
- - npm install babel-preset-es2015 --save-dev
- 
-Open package .json and add:
- - "build": "babel ./js/* -d ES6" to scripts
+# ES6-UCA
 
-Create .babelrc and add contents as:
- 
-{
-    "presets": ["es2015"]
-}
+> This project is a demo student dashboard which has it's functionality working with ES6. It focuses on using the new features introduced by ES6 like declaring variables with `let` and `const` and the use of `arrow functions`.
 
-Run npm run build
+## Functionality : 
+
+* Add Student
+* Remove Student
+* Remove Multiple Student Entries
+* Edit Student Information
+
+## Dependencies (Dev and User) : 
+* [Materialize Css](http://materializecss.com/)
+* [Jquery](http://jquery.com/)
+* Babel-CLI
+* Babel Core
+
+## Setting up Project Locally : 
+* Clone the repo
+* Run `npm install`
+* Edit the files in a text editor of your choice
+
+> The project follow Material Design Guidelines and acts as a Single Page Application
+
+
 
