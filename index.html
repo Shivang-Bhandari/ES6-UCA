@@ -9,13 +9,13 @@
   <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onload="getStudentDetails()">
+<body onload="getStudentDetails()" id="body">
 
   <h1 class="thin center" style="color:white">Welcome to Student Portal</h1>
 
   <div class="container">
     <span>
-        <ul class="collapsible" data-collapsible="accordion" id="main">
+        <ul class="collapsible popout" data-collapsible="accordion" id="main">
         </ul>
     </span>
   </div>
@@ -31,57 +31,22 @@
       <i class="material-icons">menu</i>
     </a>
     <ul>
-      <li><a class="btn-floating red waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons">remove</i></a></li>
+      <li><a class="btn-floating red waves-effect waves-light btn modal-trigger" href="#" onclick="multipleDelete()"><i class="material-icons">remove</i></a></li>
       <li><a class="btn-floating green waves-effect waves-light btn modal-trigger" href="#modal2"><i class="material-icons">add</i></a></li>
     </ul>
   </div>
 
   <!-- Modal Structure -->
 
-  <div id="modal1" class="modal" style="overflow-y:visible;">
-    <div class="modal-content">
-      <h4>Remove Student</h4>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="batch" type="text" class="validate">
-              <label for="btach">Batch</label>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer ">
-      <a onclick="removeStudent()" class="modal-action modal-close waves-effect waves-green btn-flat red"><span style="color:white">Remove</span></a>
-    </div>
-  </div>
-
-
-  <div id="modal2" class="modal" style="overflow-y:visible;">
+  <div id="modal2" class="modal" style="overflow-y:scroll;">
     <div class="modal-content">
       <h4>Add Student</h4>
       <div class="row">
         <form class="col s12">
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12">
               <input id="add_name" type="text" class="validate">
               <label for="add_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="add_last_name" type="text" class="validate">
-              <label for="add_last_name">Last Name</label>
             </div>
           </div>
 
@@ -91,6 +56,21 @@
               <label for="add_btach">Batch</label>
             </div>
           </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="add_passout" type="text" class="validate">
+              <label for="add_passout">Passout</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="add_roll" type="text" class="validate">
+              <label for="add_roll">Roll Number</label>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
@@ -99,7 +79,7 @@
     </div>
   </div>
 
-  </div>
+
 </body>
 
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
