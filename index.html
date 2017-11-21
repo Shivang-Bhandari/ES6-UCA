@@ -43,6 +43,47 @@
   </div>
 
   <!-- Modal Structure -->
+  <div id="modal1" class="modal" style="overflow-y:scroll;">
+    <div class="modal-content">
+      <h4>Edit Student Info</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="replace_name" type="text" class="validate">
+              <label for="replace_name">First Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="replace_batch" type="text" class="validate">
+              <label for="replace_btach">Batch</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="replace_passout" type="text" class="validate">
+              <label for="replace_passout">Passout</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="replace_roll" type="text" class="validate">
+              <label for="replace_roll">Roll Number</label>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" onclick="edit($(this))" class="modal-action modal-close waves-effect waves-green btn-flat green">Replace</a>
+    </div>
+  </div>
+
 
   <div id="modal2" class="modal" style="overflow-y:scroll;">
     <div class="modal-content">
@@ -81,7 +122,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a onclick="addStudent()" class="modal-action modal-close waves-effect waves-green btn-flat green">Agree</a>
+      <a onclick="addStudent()" class="modal-action modal-close waves-effect waves-green btn-flat green">Add</a>
     </div>
   </div>
 

@@ -9,13 +9,13 @@ function getStudentDetails() {
         <div class="card blue-grey darken-1 z-depth-3">
           <div class="card-content white-text">
             <span class="card-title">${student.name}</span>
-            <p>Roll Number : ${student.roll}</p>
-            <p>batch : ${student.batch}</p>
-            <p>passout : ${student.passout}</p>
+            <p>Roll Number : <span name="info">${student.roll}</span></p>
+            <p>batch : <span name="info">${student.batch}</span></p>
+            <p>passout : <span name="info">${student.passout}</span></p>
           </div>
           <div class="card-action" style="display:flex;flex:auto;">
             <div>
-            <a href="#" onclick=edit($(this))>Edit</a>
+            <a href="#" onclick=edit()>Edit</a>
             <a href="#" onclick=deleteStudent($(this))>Delete</a>
             </div>
             <div class="switch right">
@@ -60,51 +60,53 @@ const addStudent = () => {
   let passout = document.getElementById('add_passout').value;
 
   // Check for fields
-  if (name == "" || batch == "") {
+  if (name == "" || batch == "" ||roll=="" || passout=="") {
     Materialize.toast('Please Fill all form Feilds and Try Again', 3000, 'rounded');
   }
+  else{
+    const kid = {
+      name,
+      batch,
+      roll,
+      passout
+    };
 
-  // object decalaration
-  const kid = {
-    name,
-    batch,
-    roll,
-    passout
-  };
+    students.push(kid);
 
-  students.push(kid);
+    // updating list
+    list.innerHTML += `
+        <li>
 
-  // updating list
-  list.innerHTML += `
-      <li>
-
-      <div class="col s12 m6">
-        <div class="card blue-grey darken-1 z-depth-3">
-          <div class="card-content white-text">
-            <span class="card-title">${kid.name}</span>
-            <p>Roll Number : ${kid.roll}</p>
-            <p>batch : ${kid.batch}</p>
-            <p>passout : ${kid.passout}</p>
-          </div>
-          <div class="card-action" style="display:flex;flex:auto;">
-            <div>
-            <a href="#" onclick=edit($(this))>Edit</a>
-            <a href="#" onclick=deleteStudent($(this))>Delete</a>
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1 z-depth-3">
+            <div class="card-content white-text">
+              <span class="card-title">${kid.name}</span>
+              <p>Roll Number : ${kid.roll}</p>
+              <p>batch : ${kid.batch}</p>
+              <p>passout : ${kid.passout}</p>
             </div>
-            <div class="switch right">
-              <label>
-                No
-              <input type="checkbox" name="deleteThis">
-              <span class="lever"></span>
-                Delete Multiple
-              </label>
+            <div class="card-action" style="display:flex;flex:auto;">
+              <div>
+              <a href="#" onclick=edit($(this))>Edit</a>
+              <a href="#" onclick=deleteStudent($(this))>Delete</a>
+              </div>
+              <div class="switch right">
+                <label>
+                  No
+                <input type="checkbox" name="deleteThis">
+                <span class="lever"></span>
+                  Delete Multiple
+                </label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      </li>`
-  ;
+        </li>`
+    ;
+  }
+  // object decalaration
+
 }
 
 // method to remove students
@@ -116,11 +118,20 @@ const deleteStudent = ($element) => {
 // method to remove multiple students
 const deleteMultiple = ()=>{
   let deleteList = document.getElementsByName('deleteThis');
+  let flag=0;
+
   for(var i=0;i<deleteList.length;i++){
     if(deleteList[i].checked==true){
       deleteList[i].parentNode.parentNode.parentNode.parentNode.remove();
       i--;
+      flag=1;
     }
-
   }
+  if(flag==0){
+    Materialize.toast('Please Select elements to delete', 3000, 'rounded');
+  }
+}
+
+const edit=()=>{
+  $('#modal1').modal('open');
 }
