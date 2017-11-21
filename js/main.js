@@ -75,7 +75,36 @@ const addStudent = () => {
   students.push(kid);
 
   // updating list
-  getStudentDetails();
+  list.innerHTML += `
+      <li>
+
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">${kid.name}</span>
+            <p>Roll Number : ${kid.roll}</p>
+            <p>batch : ${kid.batch}</p>
+            <p>passout : ${kid.passout}</p>
+          </div>
+          <div class="card-action" style="display:flex;flex:auto;">
+            <div>
+            <a href="#" onclick=edit($(this))>Edit</a>
+            <a href="#" onclick=deleteStudent($(this))>Delete</a>
+            </div>
+            <div class="switch right">
+              <label>
+                No
+              <input type="checkbox" name="deleteThis">
+              <span class="lever"></span>
+                Delete Multiple
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </li>`
+  ;
 }
 
 // method to remove students
